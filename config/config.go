@@ -17,6 +17,7 @@ type Config struct {
 	DocumentsDir          string
 	Limit                 int
 	Port                  string
+	DatabaseURL           string // New field for your PostgreSQL DSN.
 }
 
 // ConfigInstance is the global configuration instance.
@@ -33,6 +34,7 @@ func LoadConfig() {
 		OpenWebUIAPIURL:       os.Getenv("OPENWEBUI_API_URL"),
 		DocumentsDir:          os.Getenv("DOCUMENTS_DIR"),
 		Port:                  os.Getenv("PORT"),
+		DatabaseURL:           os.Getenv("DATABASE_URL"), // Load the database URL from your env.
 	}
 
 	if ConfigInstance.Port == "" {
@@ -52,7 +54,7 @@ func LoadConfig() {
 		ConfigInstance.Limit = 100
 	}
 
-	// Optional: Ensure a required value is set.
+	// Optional: Ensure required values are set.
 	if ConfigInstance.APIBaseURL == "" {
 		log.Fatal("API_BASE_URL is not set. Please set it in your .env file.")
 	}

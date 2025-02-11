@@ -12,6 +12,7 @@ import (
 
 	"github.com/mikeshootzz/outline-rag-scraper/config"
 	"github.com/mikeshootzz/outline-rag-scraper/handlers"
+	"github.com/mikeshootzz/outline-rag-scraper/utils" // Import the utils package for DB initialization.
 )
 
 func main() {
@@ -22,6 +23,9 @@ func main() {
 
 	// Load configuration (populates config.ConfigInstance).
 	config.LoadConfig()
+
+	// Initialize the PostgreSQL database connection.
+	utils.InitDB()
 
 	// Create a new router.
 	router := mux.NewRouter()
