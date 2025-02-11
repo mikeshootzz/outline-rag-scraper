@@ -2,9 +2,10 @@ package models
 
 // Document represents a single document.
 type Document struct {
-	ID    string `json:"id"`
-	Title string `json:"title"`
-	URLId string `json:"urlId"`
+	ID           string `json:"id"`
+	Title        string `json:"title"`
+	URLId        string `json:"urlId"`
+	CollectionId string `json:"collectionId"` // Added this field
 }
 
 // DocumentsResponse represents the API response when listing documents.
